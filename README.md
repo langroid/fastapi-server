@@ -25,6 +25,12 @@ Note that this will run on `localhost:90` -- caution it's 90 not 80
 make up
 ```
 
+# See docker container logs in `tail -f` mode
+
+```bash
+make tail
+```
+
 # Test the FastAPI server
 
 This tests the server using both the test client provided by FastAPI
