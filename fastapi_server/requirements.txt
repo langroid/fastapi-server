@@ -1,0 +1,7 @@
+langroid[unstructured,hf-embeddings]==0.1.222
+fastapi==0.110.0
+uvicorn==0.27.1
+python-multipart==0.0.9
+openai==1.14.1
+qdrant-client==1.8.0
+python-magic==0.4.27
