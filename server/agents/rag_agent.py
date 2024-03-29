@@ -29,7 +29,7 @@ class RagAgentConfig(lr.agent.special.DocChatAgentConfig):
     )
 
     vecdb: lr.vector_store.QdrantDBConfig = lr.vector_store.QdrantDBConfig(
-        collection_name="intellilang",
+        collection_name="langroid-rag",
         replace_collection=False,
         cloud=True,
         #storage_path=".qdrant/data/",
@@ -37,7 +37,7 @@ class RagAgentConfig(lr.agent.special.DocChatAgentConfig):
     )
 
     # vecdb: lr.vector_store.LanceDBConfig = lr.vector_store.LanceDBConfig(
-    #     collection_name="intellilang",
+    #     collection_name="langroid-rag",
     #     replace_collection=False,
     #     storage_path=".lancedb/data/",
     #     embedding=embed_cfg,

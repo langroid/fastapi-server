@@ -53,7 +53,7 @@ def test_toy_endpoint(real_endpoint:bool):
     "doc",
     ["tests/data/moon-pilot-req.txt", "tests/data/mobile-job-desc.pdf"]
 )
-@pytest.mark.parametrize("real_endpoint", [True, False])
+@pytest.mark.parametrize("real_endpoint", [False,True])
 def test_ask_doc(doc, real_endpoint:bool):
     url, client = get_url_client(route = "/langroid/askdoc", real = real_endpoint)
     headers = {
