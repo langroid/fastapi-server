@@ -1,7 +1,25 @@
 # Example FastAPI server using Langroid
-For env setup, follow the instructions
-in the [langroid-examples](https://github.com/langroid/langroid-examples) repo.
 
+### Setup
+For env setup, follow the instructions
+in the [langroid-examples](https://github.com/langroid/langroid-examples) repo, which 
+means roughly the following. First ensure you have the latest `poetry` and 
+you are using python 3.11+.
+
+```bash
+python3 -m venv .venv
+. .venv/bin/activate
+poetry env use 3.11
+poetry install
+```
+
+Copy the `.env-template` to `.env` and fill in the values of the 
+`OPENAI_API_KEY`, `QDRANT_API_KEY` and `QDRANT_API_URL` variables.
+(The latter two are needed to use the [Qdrant Cloud](https://qdrant.tech/) vector-store;
+consult their docs to see how to get these values.)
+
+
+### Directory structure
 Various files, dirs:
 
 - `fastapi_server/`: FastAPI server code, defines the routes/endpoints. Contains:
@@ -12,26 +30,24 @@ Various files, dirs:
 - `Makefile`: to build and run the docker container
 - `server/`: auxiliary code modules that can be imported into `app.py`
 
-# Build docker container
+### Building, running the docker container
 
 ```bash
 make build
 ```
-
-# Run docker container
 
 Note that this will run on `localhost:90` -- caution it's 90 not 80 
 ```bash
 make up
 ```
 
-# See docker container logs in `tail -f` mode
+See docker container logs in `tail -f` mode:
 
 ```bash
 make tail
 ```
 
-# Test the FastAPI server
+### Test the FastAPI server
 
 This tests the server using both the test client provided by FastAPI
 (which lets you step into the code while it's running),
