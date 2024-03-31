@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = ">=3.11,<3.12"
-langroid = {version="^0.1.222", extras = ["hf-embeddings", "postgres", "unstructured"]}
+langroid = {version="^0.1.222", extras = ["hf-embeddings", "unstructured"]}
 pytest = "^7.3.1"
 grpcio = "^1.62.0"
 anyio = "^4.3.0"
