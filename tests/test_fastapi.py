@@ -7,7 +7,9 @@ import requests
 from dotenv import load_dotenv
 import os
 import json
+import logging
 
+logger = logging.getLogger(__name__)
 load_dotenv()
 
 def get_content_type(filename: str) -> str:
@@ -55,6 +57,9 @@ def test_toy_endpoint(real_endpoint:bool):
 )
 @pytest.mark.parametrize("real_endpoint", [False,True])
 def test_ask_doc(doc, real_endpoint:bool):
+    real_str = "CONTAINER ENDPT" if real_endpoint else "CODE"
+    logger.warning(f"\n\n****** TESTING against {real_str} with file {doc} ******\n\n")
+    logger.warning(f"------------------------------------")
     url, client = get_url_client(route = "/langroid/askdoc", real = real_endpoint)
     headers = {
         "openai-api-key": os.getenv("OPENAI_API_KEY")
