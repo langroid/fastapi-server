@@ -19,7 +19,7 @@ def get_content_type(filename: str) -> str:
 
 def get_url_client(route:str, real: bool) -> Tuple[str, Any]:
     if real:
-        base_url = os.getenv("LANGROID_BASE_URL", "http://localhost:80")
+        base_url = os.getenv("LANGROID_BASE_URL", "http://localhost:90")
         url = f"{base_url}{route}"
         client = requests
     else:

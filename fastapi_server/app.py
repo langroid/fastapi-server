@@ -163,9 +163,9 @@ if __name__ == "__main__":
     RELOAD = os.getenv("RELOAD", "false").lower() in ["true", "1", "t"]
 
     uvicorn.run(
-        fastapi_server.app,
+        app,
         host="0.0.0.0",
-        port=80,
+        port=90,
         # deubg=DEBUG,
         # reload=RELOAD,
         # log_level="debug" if DEBUG else "info",
