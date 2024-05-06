@@ -9,8 +9,8 @@ export
 # Customize these variables for your project
 LOCAL_ARCH := $(shell uname -m)
 GCLOUD_ARCH := amd64
-IMAGE_NAME := langroid-server
-G_IMAGE_NAME := langroid-server
+IMAGE_NAME := langroid-fastapi-server
+G_IMAGE_NAME := langroid-fastapi-server
 # Use CURRENT_IMAGE if available, otherwise fallback to a default
 
 CONTAINER_NAME := langroid-container
@@ -21,7 +21,7 @@ GCLOUD_IMAGE_NAME := $(GCLOUD_REGISTRY_PREFIX)/$(GCLOUD_PROJECT_ID)/$(G_IMAGE_NA
 
 GCLOUD_RUN_SERVICE := langroid-server
 GCLOUD_REGION := us-east4
-BUCKET_NAME := docurank-$(GCLOUD_PROJECT_ID)
+BUCKET_NAME := fastapi-server-$(GCLOUD_PROJECT_ID)
 
 DOCKERFILE_PATH := fastapi_server/Dockerfile
 

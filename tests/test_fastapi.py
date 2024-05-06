@@ -45,6 +45,17 @@ def test_agent_query(real_endpoint:bool):
     assert "7" in response.json()
 
 @pytest.mark.parametrize("real_endpoint", [True, False])
+def test_agent_ollama_query(real_endpoint:bool):
+    url, client = get_url_client(route = "/agent-ollama/query", real = real_endpoint)
+
+    response = client.post(
+        url,
+        json={"query": "What is 3+4?"},
+    )
+    assert response.status_code == 200
+    assert "7" in response.json()
+
+@pytest.mark.parametrize("real_endpoint", [True, False])
 def test_toy_endpoint(real_endpoint:bool):
     url, client = get_url_client(route = "/test", real = real_endpoint)
     response = client.post(url, json={"x": 10})

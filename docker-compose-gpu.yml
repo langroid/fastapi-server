@@ -1,0 +1,33 @@
+version: '3.8'
+services:
+  fastapi:
+    image: ${IMAGE_NAME}:${TAG}
+    volumes:
+      - ./server/:/app/server/ # Mount the source code directory into the container
+    build:
+      context: .
+      dockerfile: fastapi_server/Dockerfile
+      args:
+        - LOCAL_ARCH=${LOCAL_ARCH}
+    ports:
+      - "${PORT}:${PORT}"
+    environment:
+      - PORT=${PORT}
+      - REDIS_PASSWORD=${REDIS_PASSWORD}
+      - REDIS_HOST=${REDIS_HOST}
+      - REDIS_PORT=${REDIS_PORT}
+      - QDRANT_API_URL=${QDRANT_API_URL}
+      - QDRANT_API_KEY=${QDRANT_API_KEY}
+  ollama:
+    image: ollama/ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama:/root/.ollama
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [ gpu ]
+    command: ollama run llama2

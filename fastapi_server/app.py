@@ -127,6 +127,21 @@ async def agent_query(query: Query, openai_api_key: str = Header(...)) -> str:
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+@app.post("/agent-ollama/query")
+async def agent_ollama_query(query: Query) -> str:
+    try:
+        #os.environ["OLLAMA_HOST"]="127.0.0.1:11434"
+        agent = lr.ChatAgent(
+            lr.ChatAgentConfig(
+                llm=lm.OpenAIGPTConfig(chat_model="ollama/llama2"),
+            )
+        )
+        logger.warning("Agent created properly, now getting response")
+        response = agent.llm_response(query.query).content
+        return response
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 def _copy_to_temp_file(file: UploadFile) -> NamedTemporaryFile:
     _, file_extension = os.path.splitext(file.filename)
     with NamedTemporaryFile(delete=False, suffix=file_extension) as temp_file:
