@@ -44,7 +44,7 @@ def test_agent_query(real_endpoint:bool):
     assert response.status_code == 200
     assert "7" in response.json()
 
-@pytest.mark.parametrize("real_endpoint", [True, False])
+@pytest.mark.parametrize("real_endpoint", [False,True])
 def test_agent_ollama_query(real_endpoint:bool):
     url, client = get_url_client(route = "/agent-ollama/query", real = real_endpoint)
 

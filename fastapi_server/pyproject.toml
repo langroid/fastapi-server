@@ -6,12 +6,13 @@ authors = ["Prasad Chalasani <pchalasani@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
-python = ">=3.11, <3.12"
+python = ">=3.10, <3.12"
 langroid = "^0.1.222"
 unstructured = "0.10.16"
 fastapi = "^0.110.0"
 uvicorn = "^0.27.1"
 python-multipart = "^0.0.9"
+ollama = "^0.1.9"
 
 
 [build-system]

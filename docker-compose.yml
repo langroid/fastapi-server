@@ -11,6 +11,7 @@ services:
         - LOCAL_ARCH=${LOCAL_ARCH}
     ports:
       - "${PORT}:${PORT}"
+      - "11434:11434"
     environment:
       - PORT=${PORT}
       - REDIS_PASSWORD=${REDIS_PASSWORD}

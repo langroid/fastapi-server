@@ -130,12 +130,30 @@ async def agent_query(query: Query, openai_api_key: str = Header(...)) -> str:
 @app.post("/agent-ollama/query")
 async def agent_ollama_query(query: Query) -> str:
     try:
-        #os.environ["OLLAMA_HOST"]="127.0.0.1:11434"
+        #os.environ["OLLAMA_HOST"]="0.0.0.0:11434"
         agent = lr.ChatAgent(
             lr.ChatAgentConfig(
                 llm=lm.OpenAIGPTConfig(chat_model="ollama/llama2"),
             )
         )
+        # import ollama
+        # #verify llama2
+        # ollama_show = ollama.show("llama2")
+        # print(ollama_show)
+        # assert ollama.show("llama2")["details"]["family"] == "llama"
+        # logger.warning("ollama model verified")
+        # import requests
+        # import json
+        #
+        # url = 'http://localhost:11434/api/generate'
+        # data = {
+        #     "model": "llama2",
+        #     "prompt": "What is 3+5?",
+        #     "stream": False
+        # }
+        #
+        # response = requests.post(url, json=data)
+        # logger.warning(f"Test response: {response.json()}")
         logger.warning("Agent created properly, now getting response")
         response = agent.llm_response(query.query).content
         return response
